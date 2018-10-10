@@ -1,0 +1,17 @@
+<button (click)="logout()">Logout</button>
+<div class="row">
+  <div class="list-group col-3">
+    <a class="list-group-item active">BlogNews Group</a>
+
+    <a class="list-group-item" *ngFor="let group1 of groups" [routerLink]="[ '/content/', group1.groupsId ]">{{group1.groupsTitle}}
+    </a>
+  </div>
+  <div alig="right" class="list-group col-9">
+
+    <ul>
+      <li class="list-group-item " *ngFor="let content of contents">{{content.contentText}}</li>
+    </ul>
+
+
+  </div>
+</div>
