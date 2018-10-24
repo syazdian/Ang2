@@ -12,21 +12,28 @@ import "rxjs/add/operator/map";
   providedIn: "root"
 })
 export class ContentService {
-  constructor(private http: AuthHttp, private http1: Http) {}
+  constructor(private authhttp: AuthHttp, private http: Http) {}
   url: string = "http://localhost:43416/api/content/";
 
-  getAllGroups() {
-    // let header = new Headers();
-    // let token = localStorage.getItem("token");
-    // header.append("Authorization", "Bearer " + token);
-    // let options = new RequestOptions({ headers: headers });
+  CreateHeader(): any {
+    let header = new Headers();
+    let token = localStorage.getItem("token");
+    header.append("Authorization", "Bearer " + token);
+    let options = new RequestOptions({ headers: header });
+    return options;
+  }
 
-    //  return this.http1.get(this.url + "GetAllGroups", options);
-    return this.http1.get(this.url + "GetAllGroups"); //.map(res => res.json());
+  getAllGroups() {
+    return this.http.get(this.url + "GetAllGroups", this.CreateHeader());
+    // return this.authhttp.get(this.url + "GetAllGroups"); //.map(res => res.json());
   }
 
   getByGroupId(groupid: number) {
-    return this.http1.get(this.url + "GetByGroupId/" + groupid);
+    return this.http.get(
+      this.url + "GetByGroupId/" + groupid,
+      this.CreateHeader()
+    );
+    // return this.authhttp.get(this.url + "GetByGroupId/" + groupid);
     //.map(res => res.json());
   }
 }

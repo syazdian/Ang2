@@ -39,10 +39,9 @@ export class AuthService {
           let result = response.json();
           // console.log(result);
           if (result && result.token) {
-            localStorage.setItem("token", result.token);
-
+            localStorage.setItem('token', result.token);
             let jwt = new JwtHelper();
-            this.currentUser = jwt.decodeToken(localStorage.getItem("token"));
+            this.currentUser = jwt.decodeToken(localStorage.getItem('token'));
             return true;
           } else return false;
         })
@@ -50,11 +49,11 @@ export class AuthService {
   }
 
   logoutAuth() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     this.currentUser = null;
   }
 
   isLoggedIn() {
-    return tokenNotExpired("token");
+    return tokenNotExpired('token');
   }
 }
