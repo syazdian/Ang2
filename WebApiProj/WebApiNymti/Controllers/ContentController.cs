@@ -15,7 +15,7 @@ namespace WebApiNymti.Controllers
      
     [Route("api/[controller]")]
     [ApiController]
-  //  [Authorize]
+    [Authorize]
     [EnableCors("AllowSpecificOrigin")]
     public class ContentController : ControllerBase
     {
